@@ -46,7 +46,7 @@ loadContigs <- function(input,
     format.list <- list("WAT3R" = "barcode_results.csv", 
                         "10X" =  "filtered_contig_annotations.csv", 
                         "AIRR" = "airr_rearrangement.tsv", 
-                        "Dandelion" = "all_contig_dandelion.tsv",
+                        "Dandelion" = c("all_contig_dandelion.tsv","filtered_contig_dandelion.tsv),
                         "Immcantation" = "_data.tsv",
                         "MiXCR" = "clones.tsv", 
                         "JSON" = ".json",
@@ -281,8 +281,8 @@ loadContigs <- function(input,
 
 .parseDandelion <- function(df) {
   for (i in seq_along(df)) {
-    df[[i]] <- df[[i]][,c("cell_id", "locus", "consensus_count", "v_call", "d_call", "j_call", "c_call", "cdr3", "cdr3_aa", "productive")]
-    colnames(df[[i]]) <- c("barcode", "chain", "reads", "v_gene", "d_gene", "j_gene", "c_gene", "cdr3_nt", "cdr3", "productive")
+    df[[i]] <- df[[i]][,c("cell_id", "locus", "consensus_count", "v_call", "d_call", "j_call", "c_call", "cdr3", "cdr3_aa", "productive","mu_count","mu_freq")]
+    colnames(df[[i]]) <- c("barcode", "chain", "reads", "v_gene", "d_gene", "j_gene", "c_gene", "cdr3_nt", "cdr3", "productive","mu_count","mu_freq")
   } 
   return(df)
 }
